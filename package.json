@@ -1,0 +1,31 @@
+{
+  "name": "nowa-lib",
+  "version": "1.0.0",
+  "description": "nowa libraries builder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nowa-webpack/nowa-lib.git"
+  },
+  "keywords": [
+    "nowa",
+    "webpack",
+    "lib"
+  ],
+  "author": "gbk <ck0123456@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/nowa-webpack/nowa-lib#readme",
+  "peerDependencies": {
+    "nowa": "~1.0.0"
+  },
+  "dependencies": {
+    "babel-core": "~6.8.0",
+    "babel-loader": "~6.2.4",
+    "clean-css": "~3.4.12",
+    "uglify-js": "~2.6.2",
+    "webpack": "~1.13.0"
+  }
+}
