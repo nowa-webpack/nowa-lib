@@ -2,7 +2,7 @@
 * @Author: gbk <ck0123456@gmail.com>
 * @Date:   2016-04-21 17:34:00
 * @Last Modified by:   gbk
-* @Last Modified time: 2016-05-18 13:40:54
+* @Last Modified time: 2016-05-18 16:02:23
 */
 
 'use strict';
@@ -31,7 +31,7 @@ module.exports = {
     [ '-p, --progress', 'show progress' ],
     [ '-l, --libraries', 'libraries builder config' ],
     [ '    --skipinstall', 'skip npm install' ],
-    [ '-n, --npm', 'which npm to use(like npm|cnpm|tnpm)', 'npm' ]
+    [ '-n, --npm [npm]', 'which npm to use(like npm|cnpm|tnpm)', 'npm' ]
   ],
 
   action: function(options) {
