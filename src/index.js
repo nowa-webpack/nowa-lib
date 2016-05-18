@@ -2,7 +2,7 @@
 * @Author: gbk <ck0123456@gmail.com>
 * @Date:   2016-04-21 17:34:00
 * @Last Modified by:   gbk
-* @Last Modified time: 2016-05-17 22:24:32
+* @Last Modified time: 2016-05-18 13:40:54
 */
 
 'use strict';
@@ -30,7 +30,8 @@ module.exports = {
     [ '    --skipminify', 'skip minify js and css' ],
     [ '-p, --progress', 'show progress' ],
     [ '-l, --libraries', 'libraries builder config' ],
-    [ '    --skipinstall', 'skip npm install' ]
+    [ '    --skipinstall', 'skip npm install' ],
+    [ '-n, --npm', 'which npm to use(like npm|cnpm|tnpm)', 'npm' ]
   ],
 
   action: function(options) {
@@ -44,6 +45,7 @@ module.exports = {
     var progress = options.progress;
     var libraries = options.libraries;
     var skipinstall = options.skipinstall;
+    var npm = options.npm;
 
     // libraries is required
     if (!libraries) {
@@ -97,11 +99,12 @@ module.exports = {
 
     // install deps
     console.log('Installing dependencies of libraries...');
-    spawn('npm', skipinstall ? [ '-v' ] : [
+    spawn(npm, skipinstall ? [ '-v' ] : [
       'install',
       '-d'
     ].concat(command), {
-      stdio: 'inherit'
+      stdio: 'inherit',
+      stderr: 'inherit'
     }).on('exit', function(code) {
       if (code !== 0) {
         console.error('install error');

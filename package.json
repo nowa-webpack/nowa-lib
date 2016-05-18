@@ -1,6 +1,6 @@
 {
   "name": "nowa-lib",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "nowa libraries builder",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "license": "MIT",
   "homepage": "https://github.com/nowa-webpack/nowa-lib#readme",
   "peerDependencies": {
-    "nowa": "~1.0.0"
+    "nowa": "~0.1.0"
   },
   "dependencies": {
     "babel-core": "~6.8.0",
