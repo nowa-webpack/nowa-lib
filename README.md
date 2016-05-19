@@ -13,8 +13,8 @@ nowa libraries builder
 ## Install
 
 ```bash
-$ npm i nowa
-$ npm i nowa-lib -g
+$ npm i nowa -g
+$ nowa install lib
 ```
 
 ## Usage
