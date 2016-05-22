@@ -2,7 +2,7 @@
 * @Author: gbk <ck0123456@gmail.com>
 * @Date:   2016-04-21 17:34:00
 * @Last Modified by:   gbk
-* @Last Modified time: 2016-05-18 16:02:23
+* @Last Modified time: 2016-05-22 18:00:03
 */
 
 'use strict';
@@ -49,7 +49,7 @@ module.exports = {
 
     // libraries is required
     if (!libraries) {
-      console.error('Please add `libraries` config to `abc.json`');
+      console.error('No `libraries` config found in `abc.json`');
       return;
     }
 
