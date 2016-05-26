@@ -1,8 +1,8 @@
 /*
 * @Author: gbk <ck0123456@gmail.com>
 * @Date:   2016-04-21 17:34:00
-* @Last Modified by:   gbk
-* @Last Modified time: 2016-05-22 18:00:03
+* @Last Modified by:   caoke
+* @Last Modified time: 2016-05-23 19:39:24
 */
 
 'use strict';
@@ -23,8 +23,8 @@ module.exports = {
   description: pkg.description,
 
   options: [
-    [ '-s, --src [dir]', 'source directory, default to `src`', 'src' ],
-    [ '-d, --dist [dir]', 'build directory, default to `dist`', 'dist' ],
+    [ '-s, --src <dir>', 'source directory, default to `src`', 'src' ],
+    [ '-d, --dist <dir>', 'build directory, default to `dist`', 'dist' ],
     [ '-o, --loose', 'use babel es2015 loose mode to transform codes' ],
     [ '-c, --keepconsole', 'keep `console.log`' ],
     [ '    --skipminify', 'skip minify js and css' ],
