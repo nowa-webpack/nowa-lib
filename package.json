@@ -1,6 +1,6 @@
 {
   "name": "nowa-lib",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "nowa libraries builder",
   "main": "index.js",
   "scripts": {
