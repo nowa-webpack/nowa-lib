@@ -1,13 +1,14 @@
 /*
 * @Author: gbk <ck0123456@gmail.com>
 * @Date:   2016-04-21 17:34:00
-* @Last Modified by:   caoke
-* @Last Modified time: 2016-05-23 19:39:24
+* @Last Modified by:   gbk
+* @Last Modified time: 2016-06-01 19:15:15
 */
 
 'use strict';
 
 var fs = require('fs');
+var os = require('os');
 var spawn = require('child_process').spawn;
 
 var webpack = require('webpack');
@@ -141,7 +142,7 @@ module.exports = {
               loader: 'babel',
               exclude: function (path) { // only uxcore and tingle need transform code
                 var isNpmModule = !!path.match(/node_modules/);
-                var isLib = !!path.match(/node_modules[\/\\](@ali[\/\\])?(uxcore|tingle)/);
+                var isLib = !!path.match(/node_modules[\/\\](@ali[\/\\])?tingle/);
                 return isNpmModule && !isLib;
               },
               query: {
@@ -154,7 +155,8 @@ module.exports = {
                   'es2015',
                   'stage-0',
                   'react'
-                ])
+                ]),
+                cacheDirectory: os.tmpdir()
               }
             }
           ]
