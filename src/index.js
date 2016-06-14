@@ -2,7 +2,7 @@
 * @Author: gbk <ck0123456@gmail.com>
 * @Date:   2016-04-21 17:34:00
 * @Last Modified by:   gbk
-* @Last Modified time: 2016-06-01 19:15:15
+* @Last Modified time: 2016-06-14 15:42:03
 */
 
 'use strict';
@@ -100,7 +100,7 @@ module.exports = {
 
     // install deps
     console.log('Installing dependencies of libraries...');
-    spawn(npm, skipinstall ? [ '-v' ] : [
+    spawn(process.platform === 'win32' ? npm + '.cmd' : npm, skipinstall ? [ '-v' ] : [
       'install',
       '-d'
     ].concat(command), {
