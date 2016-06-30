@@ -2,7 +2,7 @@
 * @Author: gbk <ck0123456@gmail.com>
 * @Date:   2016-04-21 17:34:00
 * @Last Modified by:   gbk
-* @Last Modified time: 2016-06-14 15:42:03
+* @Last Modified time: 2016-06-30 15:35:18
 */
 
 'use strict';
@@ -126,9 +126,9 @@ module.exports = {
           new webpack.optimize.DedupePlugin()
         ],
         resolveLoader: {
-          modulesDirectories: [
+          root: [
             util.relPath('..', 'node_modules'),
-            'node_modules'
+            util.relPath('..', '..')
           ]
         },
         externals: {
