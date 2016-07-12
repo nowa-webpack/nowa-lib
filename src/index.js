@@ -2,13 +2,14 @@
 * @Author: gbk <ck0123456@gmail.com>
 * @Date:   2016-04-21 17:34:00
 * @Last Modified by:   gbk
-* @Last Modified time: 2016-06-30 15:35:18
+* @Last Modified time: 2016-07-12 21:35:42
 */
 
 'use strict';
 
 var fs = require('fs');
 var os = require('os');
+var path = require('path');
 var spawn = require('child_process').spawn;
 
 var webpack = require('webpack');
@@ -156,7 +157,7 @@ module.exports = {
                   'stage-0',
                   'react'
                 ]),
-                cacheDirectory: os.tmpdir()
+                cacheDirectory: path.join(os.tmpdir(), loose ? 'babel-loose' : 'babel-strict')
               }
             }
           ]
