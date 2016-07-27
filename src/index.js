@@ -1,8 +1,8 @@
 /*
 * @Author: gbk <ck0123456@gmail.com>
 * @Date:   2016-04-21 17:34:00
-* @Last Modified by:   gbk
-* @Last Modified time: 2016-07-12 21:35:42
+* @Last Modified by:   曹柯
+* @Last Modified time: 2016-07-27 11:27:41
 */
 
 'use strict';
@@ -157,7 +157,8 @@ module.exports = {
                   'stage-0',
                   'react'
                 ]),
-                cacheDirectory: path.join(os.tmpdir(), loose ? 'babel-loose' : 'babel-strict')
+                cacheDirectory: path.join(os.tmpdir(), loose ? 'babel-loose' : 'babel-strict'),
+                babelrc: false
               }
             }
           ]
