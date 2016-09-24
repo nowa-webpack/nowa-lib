@@ -1,8 +1,8 @@
 /*
 * @Author: gbk <ck0123456@gmail.com>
 * @Date:   2016-04-21 17:34:00
-* @Last Modified by:   曹柯
-* @Last Modified time: 2016-07-27 11:27:41
+* @Last Modified by:   gbk
+* @Last Modified time: 2016-09-23 14:12:51
 */
 
 'use strict';
@@ -33,7 +33,8 @@ module.exports = {
     [ '-p, --progress', 'show progress' ],
     [ '-l, --libraries', 'libraries builder config' ],
     [ '    --skipinstall', 'skip npm install' ],
-    [ '-n, --npm [npm]', 'which npm to use(like npm|cnpm|tnpm)', 'npm' ]
+    [ '-n, --npm [npm]', 'which npm to use(like npm|cnpm|tnpm)', 'npm' ],
+    [ '    --polyfill', 'use core-js to do polyfills' ],
   ],
 
   action: function(options) {
@@ -48,28 +49,12 @@ module.exports = {
     var libraries = options.libraries;
     var skipinstall = options.skipinstall;
     var npm = options.npm;
+    var polyfill = !!options.polyfill;
 
     // libraries is required
     if (!libraries) {
       console.error('No `libraries` config found in `abc.json`');
       return;
-    }
-
-    // enable es2015 loose mode
-    if (loose) {
-
-      // modify es2015 presets, add `loose: true` option
-      var es2015Plugins = require(util.babel('preset', 'es2015')).plugins;
-      for (var i = 0; i < es2015Plugins.length; i++) {
-        if (Array.isArray(es2015Plugins[i])) {
-          es2015Plugins[i][1].loose = true;
-        } else {
-          es2015Plugins[i] = [
-            es2015Plugins[i],
-            { loose: true }
-          ];
-        }
-      }
     }
 
     // parse rules and generate entry
@@ -150,10 +135,23 @@ module.exports = {
                 plugins: util.babel('plugin', [
                   'add-module-exports',
                   'transform-es3-member-expression-literals',
-                  'transform-es3-property-literals'
+                  'transform-es3-property-literals',
+                  {
+                    name: 'transform-runtime',
+                    options: {
+                      polyfill: !!options.polyfill,
+                      helpers: false,
+                      regenerator: true
+                    }
+                  }
                 ]),
                 presets: util.babel('preset', [
-                  'es2015',
+                  {
+                    name: 'es2015',
+                    options: {
+                      loose: !!options.loose
+                    }
+                  },
                   'stage-0',
                   'react'
                 ]),
