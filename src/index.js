@@ -2,7 +2,7 @@
 * @Author: gbk <ck0123456@gmail.com>
 * @Date:   2016-04-21 17:34:00
 * @Last Modified by:   gbk
-* @Last Modified time: 2016-09-23 14:12:51
+* @Last Modified time: 2016-09-27 15:08:21
 */
 
 'use strict';
@@ -157,6 +157,13 @@ module.exports = {
                 ]),
                 cacheDirectory: path.join(os.tmpdir(), loose ? 'babel-loose' : 'babel-strict'),
                 babelrc: false
+              }
+            },
+            {
+              test: /\.js$/,
+              loader: 'es3ify',
+              include: function(path) {
+                return ~path.indexOf('babel-runtime');
               }
             }
           ]
