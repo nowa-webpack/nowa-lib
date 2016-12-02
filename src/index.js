@@ -2,7 +2,7 @@
 * @Author: gbk <ck0123456@gmail.com>
 * @Date:   2016-04-21 17:34:00
 * @Last Modified by:   gbk
-* @Last Modified time: 2016-12-02 15:04:56
+* @Last Modified time: 2016-12-02 15:29:59
 */
 
 'use strict';
@@ -130,7 +130,7 @@ module.exports = {
             {
               test: /\.jsx?$/,
               loader: 'babel',
-              includes: includes,
+              include: includes,
               query: {
                 plugins: util.babel('plugin', [
                   'add-module-exports',
