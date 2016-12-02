@@ -2,7 +2,7 @@
 * @Author: gbk <ck0123456@gmail.com>
 * @Date:   2016-04-21 17:34:00
 * @Last Modified by:   gbk
-* @Last Modified time: 2016-09-27 15:08:21
+* @Last Modified time: 2016-12-02 15:04:56
 */
 
 'use strict';
@@ -35,6 +35,7 @@ module.exports = {
     [ '    --skipinstall', 'skip npm install' ],
     [ '-n, --npm [npm]', 'which npm to use(like npm|cnpm|tnpm)', 'npm' ],
     [ '    --polyfill', 'use core-js to do polyfills' ],
+    [ '    --includes', 'babel loader should include paths' ],
   ],
 
   action: function(options) {
@@ -50,6 +51,9 @@ module.exports = {
     var skipinstall = options.skipinstall;
     var npm = options.npm;
     var polyfill = !!options.polyfill;
+    var includes = options.includes || [
+      util.cwdPath('node_modules/@ali/'),
+    ];
 
     // libraries is required
     if (!libraries) {
@@ -126,11 +130,7 @@ module.exports = {
             {
               test: /\.jsx?$/,
               loader: 'babel',
-              exclude: function (path) { // only uxcore and tingle need transform code
-                var isNpmModule = !!path.match(/node_modules/);
-                var isLib = !!path.match(/node_modules[\/\\](@ali[\/\\])?tingle/);
-                return isNpmModule && !isLib;
-              },
+              includes: includes,
               query: {
                 plugins: util.babel('plugin', [
                   'add-module-exports',
