@@ -2,7 +2,7 @@
 * @Author: gbk <ck0123456@gmail.com>
 * @Date:   2016-04-21 17:34:00
 * @Last Modified by:   gbk
-* @Last Modified time: 2016-12-02 15:29:59
+* @Last Modified time: 2017-04-26 11:40:09
 */
 
 'use strict';
@@ -33,7 +33,7 @@ module.exports = {
     [ '-p, --progress', 'show progress' ],
     [ '-l, --libraries', 'libraries builder config' ],
     [ '    --skipinstall', 'skip npm install' ],
-    [ '-n, --npm [npm]', 'which npm to use(like npm|cnpm|tnpm)', 'npm' ],
+    [ '-n, --npm [npm]', 'npm registry', 'https://registry.npm.taobao.org' ],
     [ '    --polyfill', 'use core-js to do polyfills' ],
     [ '    --includes', 'babel loader should include paths' ],
   ],
@@ -90,9 +90,10 @@ module.exports = {
 
     // install deps
     console.log('Installing dependencies of libraries...');
-    spawn(process.platform === 'win32' ? npm + '.cmd' : npm, skipinstall ? [ '-v' ] : [
+    var npmRegistry = util.getNpmRegistry(npm);
+    spawn(process.platform === 'win32' ? npmRegistry.cmd + '.cmd' : npmRegistry.cmd, skipinstall ? [ '-v' ] : [
       'install',
-      '-d'
+      '--registry=' + npmRegistry.registry
     ].concat(command), {
       stdio: 'inherit',
       stderr: 'inherit'
